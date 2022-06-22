@@ -7,10 +7,10 @@ interface Ipros {
 
 export default function Layout({ children }: Ipros) {
   return (
-    <>
+    <div className="bg-primary">
       <Header />
       <div>{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }
