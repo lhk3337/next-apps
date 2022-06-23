@@ -1,11 +1,9 @@
 import React from "react";
 import Footer from "./footer";
 import Header from "./header";
-interface Ipros {
-  children: React.ReactNode;
-}
+import { IlayoutProps } from "types";
 
-export default function Layout({ children }: Ipros) {
+export default function Layout({ children }: IlayoutProps) {
   return (
     <div className="bg-primary">
       <Header />

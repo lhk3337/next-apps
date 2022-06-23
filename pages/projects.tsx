@@ -1,14 +1,18 @@
 import Layout from "components/layout";
 import { DATABASE_ID, TOKKEN } from "config";
+import ProjectItem from "components/projects/prject-item";
 
 export default function Projects({ projects }: any) {
-  // console.log(projects);
   return (
     <Layout>
-      <h1>총 프로젝트 {projects.results.length}</h1>
-      {projects.results.map((project: any,index:number) => (
-         <h1 key={index}>{project.properties["이름"].title[0].plain_text}</h1> 
-      ))} 
+      <div className="flex flex-col items-center justify-center min-h-screen p-5 mb-10">
+        <h1 className="ml-3 text-4xl font-bold sm:text-6xl">총 프로젝트 <span className="pl-4 text-indigo-600">{projects.results.length}</span> 개</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 w-full py-6">
+          {projects.results.map((project: any) => (
+            <ProjectItem key={project.id} {...project} />
+            ))} 
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -24,6 +28,12 @@ export async function getStaticProps() {
     },
     body: JSON.stringify({
       page_size: 100,
+      sorts:[
+        {
+          "property":"이름",
+          "direction":"ascending"
+        }
+      ]
     }),
   };
 
