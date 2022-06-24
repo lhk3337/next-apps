@@ -18,7 +18,6 @@ export default function ProjectItem(data:any){
         const diffDate = startDate.getTime() - endDate.getTime();
         return Math.abs(diffDate / (1000 * 60 * 60 * 24)); 
     }
-console.log(getDateDiff(prjInfo.startDateString, prjInfo.endDateString))
     return(
         <div className="project-card">
             <Image className="rounded-t-xl" src={prjInfo.imgUrl} alt="cover image" width="100%" height="60%" layout="responsive" objectFit="fill" quality={100} />
